@@ -93,7 +93,7 @@
     }
 
     Slider.defaultOptions = {
-        speed: 150
+        speed: 30
     }
 
     var proto = Slider.prototype = new EventEmitter;
@@ -126,7 +126,8 @@
         var answerLen = answerList.length;
 
         for (var i = 0; i < answerLen; i++) {
-            answerList[i].style.height = this.clientHeight - 540 + 'px';
+            console.log(this.clientHeight - this.clientWidth / 2 + 'px')
+            answerList[i].style.height = this.clientHeight - this.clientWidth / 2 + 'px'
         }
 
         this.element.style.width = '400%'

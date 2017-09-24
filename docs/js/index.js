@@ -41,9 +41,29 @@ var util = {
 	},
 }
 
+
+var images = new Array()
+function preload() {
+    for (i = 0; i < preload.arguments.length; i++) {
+        images[i] = new Image()
+        images[i].src = preload.arguments[i]
+    }
+}
+
 E.addEvent(window, 'load', function(){
 	console.log('页面加载完毕，loading 消失')
 	util.fadeOut(document.getElementById("loading-wrapper"), 10);
+
+	preload(
+		"https://mqyqingfeng.github.io/demo/img/yayu.jpeg",
+		"https://mqyqingfeng.github.io/demo/img/yutian.jpeg",
+		"https://mqyqingfeng.github.io/demo/img/dongxiaojie.jpeg",
+		"https://mqyqingfeng.github.io/demo/img/jingjing.jpeg",
+		"https://mqyqingfeng.github.io/demo/img/joke.png",
+		"https://mqyqingfeng.github.io/demo/img/joke2.jpg",
+		"https://mqyqingfeng.github.io/demo/img/introduction.jpg",
+		"https://mqyqingfeng.github.io/demo/img/loading.jpeg"
+	)
 
 	// 初始化滚动
 	var slider = new Slider('answer-list');
@@ -70,25 +90,25 @@ E.addEvent(window, 'load', function(){
 	[
 		{type: 'text', text: '大家好，我就是静静的十年老铁！'},
 		'<br /><br />',
-		{type: 'text', text: '让我来给大家好好吐槽下静静'},
+		{type: 'text', text: '我先来列举下静静同学的几个特质：'},
 		'<br /><br />',
 		{type: 'text', text: '1. 笑点低，讲个笑话就能把自己逗死的那种 ↓'},
-		'<br /><br />',
 		{type: 'img', src: "img/joke.png", id: "joke1"},
 		{type: 'wait', time: 2000},
 		{type: 'text', text: '2. 人缘差，比如她最近摔了个下巴 ↓'},
 		{type: 'img', src: "img/joke2.jpg", id: "joke1"},
 		{type: 'wait', time: 3000},
-		{type: 'text', text: '不过，静静身材保持的还是很好的，十年始终都是个小胖友！'}
+		{type: 'text', text: '不过，静静身材保持的还是很好的，十年始终都是个小胖友！'},
+		{type: 'wait', time: 900}
 
 	]
 
 	var content3 = document.getElementById("answer-content3");
 	var arr3 =
 	[
-		{type: 'text', text: '那我再来一波轰炸吧~'},
+		{type: 'text', text: '泻药，我是静静的前任......同事，我比较有资格回答这个问题。'},
 		'<br /><br />',
-		'<video style="width: 100%" controls="controls" autoplay="autoplay"> <source src="img/interview.mp4" type="video/mp4" /> Your browser does not support the video tag. </video>',
+		'<video style="width: 100%" height="240" preload="auto" controls="controls" autoplay="autoplay"> <source src="img/interview.mp4" type="video/mp4" /> Your browser does not support the video tag. </video>',
 		{type: 'text', text: '看完往左滑哈~'},
 		'<br /><br />',
 	]
@@ -96,14 +116,9 @@ E.addEvent(window, 'load', function(){
 	var content4 = document.getElementById("answer-content4");
 	var arr4 =
 	[
-		{type: 'text', text: '尼门奏凯，总有刁民想害朕'},
+		{type: 'text', text: '大家好，我是静静本人，前几位屁民的叙述，不够客观，让我来澄清一下：'},
 		'<br /><br />',
-		{type: 'text', text: '本人贺静，江湖人称静静，乃一半明媚一半忧伤的文艺性格'},
-		'<br /><br />',
-		{type: 'text', text: '最擅长，K歌 开车和桌游'},
-		'<br /><br />',
-		{type: 'text', text: '想了解更多还是快来扫一扫吧'},
-		{type: 'img', src: "img/wecode.jpg", id: "wecode"}
+		{type: 'img', src: "img/introduction.jpg", id: "wecode"}
 	]
 
 	var answer = document.getElementById("answer")
@@ -142,6 +157,9 @@ E.addEvent(window, 'load', function(){
 			content4.innerHTML = '';
 
 			var area4 = new AutoType(content4, arr4);
+			area4.once("end", function(){
+				slider.allOff()
+			})
 		}
 
 	})

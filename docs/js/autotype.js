@@ -60,7 +60,7 @@
                         })
                     }
                 } else if (current.type == 'img') {
-                    result.push('<img id=' + (current.id ? current.id : '""') +  ' src=' + current.src + ' title=' + (current.title ? current.title : '""') + ' style="display: block;margin-left:auto;margin-right: auto;margin-top: 30px;margin-bottom: 30px;max-width:100%;" />')
+                    result.push('<img id=' + (current.id ? current.id : '""') +  ' src=' + current.src + ' title=' + (current.title ? current.title : '""') + ' style="display: block;margin-left:auto;margin-right: auto;margin-top: 10px;margin-bottom: 10px;max-width:100%;" />')
                 } else {
                     result.push(current)
                 }
@@ -79,8 +79,6 @@
 
         var index = this.index;
         var resultArr = this.resultArr;
-
-
 
         if (index < resultArr.length) {
             if (typeof resultArr[index] == 'string') {
